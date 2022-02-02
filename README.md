@@ -40,6 +40,20 @@
 * 对于第10节，需要读者切换到该目录下执行指令，其余章节不需要；
   
 
+&nbsp;
+
+
+## 项目进展  
+
+*2022.2.2*  
+使用go语言重写run-executable二进制文件，支持跨平台。  
+二进制文件含义解释 run-executable-darwin-arm64-go：
+* darwin这个位置表示操作系统，MacOS对应 darwin，Windows对应windows，Linux对应linux；
+* arm64这个位置表示CPU架构，Intel macOS对应 amd64，M1 macOS对应 arm64，Windows仅支持amd64（或叫X86_64,X64），请看清自己的计算机是跑在什么架构的CPU上；
+* 使用之前，请选择对应的二进制文件名，将Makefile文件中的executable变量值修改为你选择的二进制文件名，即可使用啦。
+
+
+
 ## 结束语
 * 欢迎大家使用
 * 欢迎大家提出建议

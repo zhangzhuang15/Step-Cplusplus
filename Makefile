@@ -4,8 +4,10 @@ c=0
 # e: exercise缩写，表示每个章节下的练习区编号
 e=0
 
+t=false
+
 shell=/bin/bash
-executable=./run-executable
+executable=./run-executable-darwin-arm64-go
 
 default:
 	@command -v g++ > /dev/null
@@ -41,7 +43,7 @@ help:
 	@echo "       help        show this message"
 
 run:
-	@${executable} --chapter ${c} --exercise ${e}
+	@${executable} --chapter ${c} --exercise ${e} --showtime=${t}
 
 
 

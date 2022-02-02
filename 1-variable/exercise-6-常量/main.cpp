@@ -14,7 +14,7 @@ int main() {
     const std::string name("jakck");
 }
 
-// 上边会操错，猜猜是哪一行？
+// 上边会报错，猜猜是哪一行？
 
 // 运行下吧 make run c=1 e=6
 

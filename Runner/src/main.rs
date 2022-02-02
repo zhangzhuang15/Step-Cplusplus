@@ -2,6 +2,8 @@ use std::env;
 use std::collections::HashMap;
 use std::fs::{self, DirEntry};
 use std::process::{self, Command, Stdio};
+use std::time::{ SystemTime };
+
 
 use regex::Regex;
 
@@ -10,13 +12,15 @@ use regex::Regex;
 struct RunnerArgs {
     chapter_id: usize,
     exercise_id: usize,
+    showtime: bool,
 }
 
 impl RunnerArgs {
-    fn new(chapter_id: usize, exercise_id: usize) -> Self{
+    fn new(chapter_id: usize, exercise_id: usize, showtime: bool) -> Self{
         let runner_args = RunnerArgs {
             chapter_id:  chapter_id,
             exercise_id: exercise_id,
+            showtime: showtime,
         };
 
         runner_args
@@ -28,6 +32,7 @@ impl RunnerArgs {
 
         let args: Vec<String> = env::args().collect();
         let args = &args[1..];
+        let mut showtime = false;
 
         while i < args.len() {
             match &args[i]  as &str {
@@ -54,6 +59,9 @@ impl RunnerArgs {
                     };
                     map.insert("exercise_id", v);
                 },
+                "--showtime" | "-showtime" => {
+                    showtime = true;
+                },
                 _ => {
                     let v = match args[i].parse::<usize>() {
                         Ok(value) => value,
@@ -76,7 +84,8 @@ impl RunnerArgs {
         Ok(
             RunnerArgs::new( 
                 *map.get(&"chapter_id").unwrap(), 
-                *map.get(&"exercise_id").unwrap()
+                *map.get(&"exercise_id").unwrap(),
+                showtime,
             )
         )
     }
@@ -317,6 +326,7 @@ fn run(args: &RunnerArgs) -> Result<&'static str, String> {
 }
 
 fn main() {
+    let start: SystemTime = SystemTime::now();
     let runner_args = RunnerArgs::from_env().expect("get wrong values of command line arguments");
     let result = run(&runner_args);
     match result {
@@ -325,4 +335,7 @@ fn main() {
             println!("{}", message)
         }
     }
+    let end: SystemTime = SystemTime::now();
+    let duration: u128 = end.duration_since(start).unwrap().as_millis();
+    println!("{}", format!("cost time : {} ms", duration));
 }
