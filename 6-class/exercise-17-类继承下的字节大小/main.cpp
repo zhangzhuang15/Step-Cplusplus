@@ -4,7 +4,7 @@ class Computer {
 
     private:
         char id;
-
+        char pid;
     // protected:
     //     int price;
 
@@ -41,7 +41,9 @@ int main() {
 // 运行代码 make run c=6 e=17
 
 // 运行代码
-// MacBook 1 bytes,  id虽然是private的，但仍旧被MacBook继承，表明private只是强调访问权私有，而非继承权私有；
+// MacBook 2 bytes,  id、pid虽然是private的，但仍旧被MacBook继承，表明private只是强调访问权私有，而非继承权私有；
+
+// 注释掉第7行代码
 
 // 打开第8、9行代码，运行代码
 // MacBook 8bytes

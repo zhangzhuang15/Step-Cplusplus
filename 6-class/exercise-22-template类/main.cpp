@@ -4,7 +4,7 @@
 template<typename T, typename S>
 class Computer {
     
-    public: using id_type=T;
+    public: using id_type=S;
 
     private:
         T id;
@@ -60,7 +60,7 @@ int main() {
 
 // 运行代码 make run c=6 e=22
 
-// 解释下第18行开始的模板定义
+// 解释下第20行开始的模板定义
 // 模板有3个泛型参数，其中 泛型 Purchase的类型又刚好是一个有2个参数的模板，
 
 // 在第24行使用 泛型 Purchase, 因为它自身是一个模板，必须具体化才能使用，
@@ -78,9 +78,9 @@ int main() {
 // 请将第32～35行代码注释，打开29～30 39～41行的注释。
 
 
-// 第7行使用啦using定义啦一个类型 id_type；
+// 第7行使用using定义一个类型 id_type；
 // 在第45行 使用 typename T::id_type 使用了这个 id_type，
-// typename就是在强调使用 ::访问的是一个类型，不是类变量，类函数；
+// typename就是在强调使用 ::访问的是一个类型，不是类变量、类函数；
 // 值得注意的是，第7行给出了public限制符，否则第45行无法访问！
 // 
 //
