@@ -1,6 +1,8 @@
 #include <iostream>
 
 class Computer {
+    private:
+     int count;
     public:
         Computer() {
             std::cout << "Computer init!" << std::endl;
@@ -13,6 +15,9 @@ class Computer {
         }
         ~Computer() {
             std::cout << "delete Computer" << std::endl;
+        }
+        Computer(int _count): count(_count) {
+            std::cout << "Computer init with one param" << std::endl;
         }
 };
 
@@ -46,10 +51,14 @@ int main() {
     // 报错！ 因为我们定义了移动构造函数 Computer(Computer&&),
     // 编译器于是没有为我们添加赋值操作符的重载。
     // 这需要我们显式地定义赋值操作符运算。
-    computer_1 = computer_2; 
+    // computer_1 = computer_2; 
 
     // std::cout << "8\t" << std::endl;
     // delete computer_6;  // 新增一次输出 delete Computer
+
+    std::cout << "10\t" << std::endl;
+    Computer computer_10 = { 4 }; // 调用了 Computer(int _count)
+
 }
 // 
 // 进入本文件所在的目录中，

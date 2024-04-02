@@ -1,0 +1,22 @@
+lldb用法介绍：
+
+  编译c/c++程序：
+    gcc demo.c -g -o out/demo
+    g++ demo.cpp -g -o out/demo
+
+  lldb调试:
+    lldb out/demo
+
+  lldb对话窗口命令：
+    break（缩写命令为b）  设置断点
+    run（缩写命令为r）    运行程序，直到遇到断点
+    next（缩写命令为n）   执行下一行指令
+    step（缩写命令为s）   跳入到下一行函数的函数体
+    backtrace（缩写命令为bt） 显示当前的有效函数
+    frame（缩写命令为f）  默认显示当前栈的内容
+    continue（缩写命令c） 继续执行程序，直到遇到断点
+    print(缩写命令为p)   打印某个变量的值
+                       p/x M      将变量M的值按照十六进制输出
+                       p/t M      将变量M的值按照二进制输出
+    expr(缩写命令为e)    在调试的过程中执行C/C++程序
+                        expr M=3  将变量M的值改成3
